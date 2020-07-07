@@ -4,6 +4,7 @@
  * Programozás és adatbázis modulzáró vizsga
  ****************************************************************************/
 using System;
+using System.IO;
 
 namespace Snooker
 {
@@ -11,8 +12,16 @@ namespace Snooker
     {
         static void Main(string[] args)
         {
-            string path = "snooker.txt";
-
+            string expected = "snooker.txt";
+            string path = (args.Length > 0) ? args[0] : expected;
+            if (!File.Exists(path))
+            {
+                throw new ExamException(
+                    String.Format("A keresett fájl nem található: {0}\n" +
+                    	"Kérem adja meg a fájl elérési útvonalát " +
+                    	"első argumentumként, vagy legyen elérhető a " +
+                    	"\"{1}\" fájlnév.", path, expected));
+            }
             try {
                 var exam = new Exam(path);
                 exam.ShowAllResults();

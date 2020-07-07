@@ -17,11 +17,6 @@ namespace Snooker
         public Exam(string path)
         {
             var records = new List<RaceRecord>();
-            if (!File.Exists(path))
-            {
-                throw new ExamException(
-                    String.Format("A keresett fájl nem található: {0}", path));
-            }
             var lines = File.ReadAllLines(path, Encoding.UTF8);
             bool first = true;
             var headers = new string[RaceTable.ColumnCount];
