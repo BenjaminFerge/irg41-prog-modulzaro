@@ -22,12 +22,8 @@ namespace Snooker
                     	"első argumentumként, vagy legyen elérhető a " +
                     	"\"{1}\" fájlnév.", path, expected));
             }
-            try {
-                var exam = new Exam(path);
-                exam.ShowAllResults();
-            } catch (ExamException ex) {
-                Console.WriteLine(ex.Message);
-            }
+            var exam = new Exam(path);
+            exam.ShowAllResults();
         }
     }
 }
